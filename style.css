@@ -1,7 +1,8 @@
 :root {
-  --primary: #3B82F6;
-  --primary-dark: #2563EB;
-  --primary-light: #EFF6FF;
+  --primary: #0086E5;
+  --primary-dark: #006BBF;
+  --primary-light: #E8F4FD;
+  --primary-lighter: #F0F8FF;
   --danger: #EF4444;
   --danger-light: #FEF2F2;
   --danger-dark: #DC2626;
@@ -41,11 +42,14 @@ body {
 
 /* Header */
 .header {
-  background: var(--gray-900);
-  padding: 18px 0;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+  padding: 14px 0;
   position: sticky;
   top: 0;
   z-index: 100;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.97);
 }
 
 .header-inner {
@@ -54,38 +58,33 @@ body {
   padding: 0 24px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
-.header-left {
+.header-center {
   display: flex;
   align-items: center;
-  gap: 10px;
 }
 
-.logo-icon svg {
+.logo-img {
+  height: 32px;
+  width: auto;
   display: block;
-}
-
-.logo-text {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--white);
-  letter-spacing: -0.5px;
 }
 
 .header-badge {
   font-size: 12px;
-  color: var(--gray-400);
-  background: rgba(255, 255, 255, 0.08);
-  padding: 5px 12px;
+  font-weight: 500;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 5px 14px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 134, 229, 0.15);
 }
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, var(--gray-900) 0%, #1a2744 100%);
+  background: linear-gradient(135deg, #003D6B 0%, #005A9E 40%, var(--primary) 100%);
   padding: 48px 24px 56px;
   text-align: center;
 }
@@ -99,12 +98,12 @@ body {
 }
 
 .hero h2 span {
-  color: var(--primary);
+  color: #7DC8FF;
 }
 
 .hero p {
   font-size: 15px;
-  color: var(--gray-400);
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1.7;
   max-width: 480px;
   margin: 0 auto;
@@ -240,7 +239,7 @@ input[type="text"]:focus,
 input[type="email"]:focus,
 textarea:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 0 3px rgba(0, 134, 229, 0.12);
 }
 
 input::placeholder,
@@ -407,7 +406,7 @@ textarea {
 .submit-btn {
   width: 100%;
   padding: 16px;
-  background: var(--gray-900);
+  background: var(--primary);
   color: var(--white);
   border: none;
   border-radius: 50px;
@@ -420,8 +419,8 @@ textarea {
 }
 
 .submit-btn:hover {
-  background: #000;
-  box-shadow: var(--shadow-lg);
+  background: var(--primary-dark);
+  box-shadow: 0 8px 24px rgba(0, 134, 229, 0.25);
   transform: translateY(-1px);
 }
 
@@ -516,6 +515,10 @@ textarea {
 
   .header-inner {
     padding: 0 16px;
+  }
+
+  .logo-img {
+    height: 28px;
   }
 
   .header-badge {
