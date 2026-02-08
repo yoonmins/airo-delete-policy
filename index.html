@@ -6,502 +6,33 @@
   <title>AIRO - 계정 및 데이터 삭제 요청</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #2563EB;
-      --primary-dark: #1D4ED8;
-      --primary-light: #DBEAFE;
-      --danger: #DC2626;
-      --danger-light: #FEE2E2;
-      --danger-dark: #B91C1C;
-      --gray-50: #F9FAFB;
-      --gray-100: #F3F4F6;
-      --gray-200: #E5E7EB;
-      --gray-300: #D1D5DB;
-      --gray-400: #9CA3AF;
-      --gray-500: #6B7280;
-      --gray-600: #4B5563;
-      --gray-700: #374151;
-      --gray-800: #1F2937;
-      --gray-900: #111827;
-      --white: #FFFFFF;
-      --success: #059669;
-      --success-light: #D1FAE5;
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-      --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
-      --radius: 12px;
-      --radius-sm: 8px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--gray-50);
-      color: var(--gray-800);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* Header */
-    .header {
-      background: var(--white);
-      border-bottom: 1px solid var(--gray-200);
-      padding: 20px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(12px);
-      background: rgba(255, 255, 255, 0.95);
-    }
-
-    .header-inner {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .logo {
-      width: 40px;
-      height: 40px;
-      background: var(--primary);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 700;
-      font-size: 16px;
-      letter-spacing: -0.5px;
-      flex-shrink: 0;
-    }
-
-    .header-text h1 {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--gray-900);
-      letter-spacing: -0.3px;
-    }
-
-    .header-text p {
-      font-size: 13px;
-      color: var(--gray-500);
-      margin-top: 1px;
-    }
-
-    /* Main */
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 32px 24px 60px;
-    }
-
-    /* Notice Banner */
-    .notice {
-      background: var(--danger-light);
-      border: 1px solid #FECACA;
-      border-radius: var(--radius);
-      padding: 20px 24px;
-      margin-bottom: 32px;
-    }
-
-    .notice-title {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--danger);
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .notice-title svg {
-      flex-shrink: 0;
-    }
-
-    .notice p {
-      font-size: 14px;
-      color: var(--gray-700);
-      line-height: 1.7;
-    }
-
-    /* Form Card */
-    .card {
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius);
-      padding: 28px;
-      margin-bottom: 24px;
-      box-shadow: var(--shadow-sm);
-      transition: box-shadow 0.2s ease;
-    }
-
-    .card:hover {
-      box-shadow: var(--shadow-md);
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--gray-100);
-    }
-
-    .card-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .card-icon.red { background: var(--danger-light); color: var(--danger); }
-    .card-icon.blue { background: var(--primary-light); color: var(--primary); }
-    .card-icon.orange { background: #FEF3C7; color: #D97706; }
-
-    .card-header-text h3 {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--gray-900);
-    }
-
-    .card-header-text p {
-      font-size: 13px;
-      color: var(--gray-500);
-      margin-top: 2px;
-    }
-
-    /* Form Elements */
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group:last-child {
-      margin-bottom: 0;
-    }
-
-    label.form-label {
-      display: block;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--gray-700);
-      margin-bottom: 7px;
-    }
-
-    label.form-label .required {
-      color: var(--danger);
-      margin-left: 2px;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    textarea {
-      width: 100%;
-      padding: 12px 16px;
-      border: 1.5px solid var(--gray-200);
-      border-radius: var(--radius-sm);
-      font-size: 14px;
-      font-family: inherit;
-      color: var(--gray-800);
-      background: var(--white);
-      transition: all 0.2s ease;
-      outline: none;
-    }
-
-    input[type="text"]:focus,
-    input[type="email"]:focus,
-    textarea:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-    }
-
-    input::placeholder,
-    textarea::placeholder {
-      color: var(--gray-400);
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    /* Checkbox Group */
-    .checkbox-group {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .checkbox-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 14px 16px;
-      border: 1.5px solid var(--gray-200);
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      transition: all 0.2s ease;
-      user-select: none;
-    }
-
-    .checkbox-item:hover {
-      border-color: var(--gray-300);
-      background: var(--gray-50);
-    }
-
-    .checkbox-item.checked {
-      border-color: var(--primary);
-      background: var(--primary-light);
-    }
-
-    .checkbox-item input[type="checkbox"] {
-      display: none;
-    }
-
-    .custom-checkbox {
-      width: 22px;
-      height: 22px;
-      border: 2px solid var(--gray-300);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 1px;
-      transition: all 0.2s ease;
-      background: var(--white);
-    }
-
-    .checkbox-item.checked .custom-checkbox {
-      background: var(--primary);
-      border-color: var(--primary);
-    }
-
-    .custom-checkbox svg {
-      opacity: 0;
-      transition: opacity 0.15s ease;
-    }
-
-    .checkbox-item.checked .custom-checkbox svg {
-      opacity: 1;
-    }
-
-    .checkbox-label-text {
-      flex: 1;
-    }
-
-    .checkbox-label-text .cb-title {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--gray-800);
-      display: block;
-    }
-
-    .checkbox-label-text .cb-desc {
-      font-size: 13px;
-      color: var(--gray-500);
-      margin-top: 3px;
-      line-height: 1.5;
-      display: block;
-    }
-
-    /* Deleted Data Info */
-    .data-info {
-      background: var(--gray-50);
-      border-radius: var(--radius-sm);
-      padding: 16px 20px;
-      margin-top: 16px;
-    }
-
-    .data-info-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--gray-600);
-      margin-bottom: 10px;
-    }
-
-    .data-info-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .data-info-list li {
-      font-size: 13px;
-      color: var(--gray-600);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .data-info-list li::before {
-      content: '';
-      width: 5px;
-      height: 5px;
-      background: var(--gray-400);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    /* Agreement */
-    .agreement {
-      background: var(--gray-50);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius);
-      padding: 20px 24px;
-      margin-bottom: 24px;
-    }
-
-    .agreement-check {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .agreement-check input[type="checkbox"] {
-      display: none;
-    }
-
-    .agreement-text {
-      font-size: 14px;
-      color: var(--gray-700);
-      line-height: 1.6;
-    }
-
-    .agreement-text strong {
-      color: var(--danger);
-    }
-
-    /* Submit Button */
-    .submit-btn {
-      width: 100%;
-      padding: 16px;
-      background: var(--danger);
-      color: var(--white);
-      border: none;
-      border-radius: var(--radius);
-      font-size: 16px;
-      font-weight: 600;
-      font-family: inherit;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      letter-spacing: -0.3px;
-    }
-
-    .submit-btn:hover {
-      background: var(--danger-dark);
-      box-shadow: var(--shadow-md);
-    }
-
-    .submit-btn:disabled {
-      background: var(--gray-300);
-      cursor: not-allowed;
-      box-shadow: none;
-    }
-
-    /* Success State */
-    .success-message {
-      display: none;
-      text-align: center;
-      padding: 60px 24px;
-    }
-
-    .success-message.show {
-      display: block;
-    }
-
-    .success-icon {
-      width: 72px;
-      height: 72px;
-      background: var(--success-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 24px;
-    }
-
-    .success-message h2 {
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--gray-900);
-      margin-bottom: 12px;
-    }
-
-    .success-message p {
-      font-size: 15px;
-      color: var(--gray-500);
-      line-height: 1.7;
-    }
-
-    /* Footer */
-    .footer {
-      text-align: center;
-      padding: 32px 24px 48px;
-      border-top: 1px solid var(--gray-200);
-      margin-top: 16px;
-    }
-
-    .footer p {
-      font-size: 13px;
-      color: var(--gray-400);
-      line-height: 1.7;
-    }
-
-    .footer a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-
-    .footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Responsive */
-    @media (max-width: 480px) {
-      .container {
-        padding: 24px 16px 48px;
-      }
-      .card {
-        padding: 20px;
-      }
-      .header-inner {
-        padding: 0 16px;
-      }
-    }
-
-    .form-content.hidden {
-      display: none;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- Header -->
   <header class="header">
     <div class="header-inner">
-      <div class="logo">A</div>
-      <div class="header-text">
-        <h1>AIRO</h1>
-        <p>계정 및 데이터 삭제 요청</p>
+      <div class="header-left">
+        <div class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 40 40" fill="none">
+            <path d="M20 6C14 6 8 10 6 16c4-2 9-3 14-3s10 1 14 3c-2-6-8-10-14-10z" fill="#3B82F6" opacity="0.7"/>
+            <path d="M20 10C15 10 10 13 8 18c3-2 8-3 12-3s9 1 12 3c-2-5-7-8-12-8z" fill="#60A5FA"/>
+            <path d="M20 14c-4 0-9 2-11 6 3-1 7-2 11-2s8 1 11 2c-2-4-7-6-11-6z" fill="#93C5FD"/>
+            <text x="10" y="34" font-family="Arial" font-weight="bold" font-size="14" fill="white">AIRO</text>
+          </svg>
+        </div>
+        <span class="logo-text">AIRO</span>
       </div>
+      <span class="header-badge">데이터 삭제 요청</span>
     </div>
   </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h2>계정 및 <span>데이터 삭제</span> 요청</h2>
+    <p>AIRO 서비스에서 사용하신 계정 및 데이터의 삭제를 요청할 수 있습니다. 요청 접수 후 7일 이내에 처리됩니다.</p>
+  </section>
 
   <main class="container">
 
@@ -674,7 +205,7 @@
     <!-- Success Message -->
     <div class="success-message" id="successMessage">
       <div class="success-icon">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="20 6 9 17 4 12"/>
         </svg>
       </div>
@@ -788,12 +319,33 @@
         requestedAt: new Date().toISOString()
       };
 
-      console.log('Delete Request:', formData);
+      // 버튼 비활성화 (중복 제출 방지)
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = '요청 전송 중...';
 
-      // 성공 화면 표시
-      document.getElementById('formContent').classList.add('hidden');
-      document.getElementById('successMessage').classList.add('show');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Google Apps Script로 데이터 전송
+      fetch(atob('aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J3NDZLLTU5V056aEhyckNNSlRhV3d5RFhjVW5sMWdkZDlkekxQalQ4blp6c2hnejFsLTFmR0JTSUd6OG41SUFpc0RSQS9leGVj'), {
+        method: 'POST',
+        body: JSON.stringify(formData)
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.result === 'success') {
+          document.getElementById('formContent').classList.add('hidden');
+          document.getElementById('successMessage').classList.add('show');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          alert('요청 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
+          submitBtn.disabled = false;
+          submitBtn.textContent = '삭제 요청 제출';
+        }
+      })
+      .catch(() => {
+        alert('네트워크 오류가 발생했습니다. 다시 시도해주세요.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = '삭제 요청 제출';
+      });
     });
   </script>
 
